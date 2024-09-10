@@ -1,0 +1,33 @@
+.quiz {
+    font-family: "Figtree", "Figtree-fallback", "Figtree-fallback-android", "Noto Sans", "NotoSans-fallback",
+        "NotoSans-fallback-android", sans-serif;
+    margin: 2rem auto;
+
+    border-radius: 18px;
+    padding: 1rem 2rem;
+
+    width: 100%;
+    max-width: 1000px;
+    height: fit-content;
+
+    background-image: url("/background-quiz.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+    box-shadow:
+        rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+    &__title {
+        margin: 2rem 5rem;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+}

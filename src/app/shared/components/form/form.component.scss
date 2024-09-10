@@ -1,0 +1,285 @@
+.quiz-form {
+    font-family: "Figtree", "Figtree-fallback", "Figtree-fallback-android", "Noto Sans", "NotoSans-fallback",
+        "NotoSans-fallback-android", sans-serif;
+    display: flex;
+    flex-direction: column;
+
+    &__completion-bar {
+        width: 100%;
+        height: 20px;
+        background-color: #e0e0e0;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+
+        &-fill {
+            height: 100%;
+            background-color: #76c7c0;
+            width: 0;
+            transition: width 0.3s ease-in-out;
+        }
+    }
+
+    &__questions {
+        margin-bottom: 20px;
+        height: 300px;
+        width: 800px;
+    }
+
+    &__question {
+        margin-bottom: 20px;
+
+        &--correct {
+            background-color: #d4edda;
+        }
+    }
+
+    &__step {
+        margin-bottom: 20px;
+    }
+
+    &__question-text {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        padding-bottom: 8px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        border-bottom: 1px solid #ccc;
+        max-width: fit-content;
+    }
+
+    &__options {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    &__option {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 10px 20px;
+        cursor: pointer;
+
+        font-size: 1.3rem;
+        opacity: 0;
+        animation: fadeIn 0.3s forwards;
+        transition:
+            background-color 0.3s,
+            color 0.3s;
+
+        &--selected {
+            background-color: #007bff;
+            color: white;
+        }
+
+        &--wrong {
+            background-color: #ff4c4c;
+            color: white;
+        }
+
+        &:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    }
+
+    &__navigation-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    &__button {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        &--submit {
+            background-color: #28a745;
+        }
+
+        &:hover:not(:disabled) {
+            background-color: darken(#007bff, 10%);
+        }
+    }
+
+    &__results {
+        margin-top: 20px;
+        text-align: center;
+
+        &-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        &-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        &-circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+
+            &-inner {
+                width: 100px;
+                height: 100px;
+                border: 10px solid #ccc;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.2em;
+                font-weight: bold;
+                color: #333;
+                animation: fillCircle 2s linear forwards;
+
+                &--full {
+                    border-color: #34fc63;
+                }
+            }
+        }
+    }
+
+    .circle-wrap {
+        margin: 50px auto;
+        width: 150px;
+        height: 150px;
+        background: #e6e2e7;
+        border-radius: 50%;
+    }
+
+    .circle-wrap .circle .mask,
+    .circle-wrap .circle .fill {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        border-radius: 50%;
+    }
+
+    .circle-wrap .circle .mask {
+        clip: rect(0px, 150px, 150px, 75px);
+    }
+
+    .circle-wrap .circle .mask .fill {
+        clip: rect(0px, 75px, 150px, 0px);
+        background-color: #9e00b1;
+    }
+    .circle-wrap .circle .mask.full,
+    .circle-wrap .circle .fill {
+        animation: fill ease-in-out 3s;
+        transform: rotate(var(--score));
+    }
+
+    @keyframes fill {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(var(--score));
+        }
+    }
+
+    .circle-wrap .inside-circle {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: #fff;
+        line-height: 130px;
+        text-align: center;
+        margin-top: 10px;
+        margin-left: 10px;
+        position: absolute;
+        z-index: 100;
+        font-weight: 700;
+        font-size: 2em;
+    }
+
+    &__display-answers {
+        margin-top: 20px;
+
+        &__question {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        &__step {
+            margin-bottom: 20px;
+        }
+
+        &__question-text {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        &__options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        &__option {
+            background-color: rgba(54, 252, 100, 0.5);
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+
+            &--selected {
+                background-color: rgba(54, 252, 100, 0.5);
+            }
+
+            &--wrong {
+                background-color: rgba(255, 77, 77, 0.5);
+                color: white;
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fillCircle {
+    from {
+        border-color: #ccc;
+    }
+    to {
+        border-color: #34fc63;
+    }
+}
+
+/**
+ * Applies animation delay to each option in the quiz form.
+ *
+ * @param {number} $i - The index of the option.
+ * @returns {void}
+ */
+@for $i from 1 through 10 {
+    .quiz-form__option:nth-child(#{$i}) {
+        animation-delay: 0.2s * $i;
+    }
+}

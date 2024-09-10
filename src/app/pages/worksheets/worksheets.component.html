@@ -1,0 +1,121 @@
+<section class="worksheets">
+  <div class="worksheets__wrapper">
+    <div class="worksheets__container">
+      <div class="worksheets__sidebar">
+        <form [formGroup]="filterForm" class="filter-form">
+          <div class="form-group">
+            <div
+              class="accordion-header"
+              (click)="toggleAccordion('grammar')"
+              [ngClass]="{ expanded: isAccordionExpanded('grammar') }"
+            >
+              <label>Grammar</label>
+              <span>&#9660;</span>
+            </div>
+            <div
+              class="accordion-content"
+              [ngClass]="{ expanded: isAccordionExpanded('grammar') }"
+            >
+              <div
+                *ngFor="
+                  let grammar of [
+                    'Present Simple',
+                    'Present Continuous',
+                    'Past Simple',
+                    'Past Continuous',
+                    'Present Perfect',
+                    'Past Perfect',
+                    'Future Simple',
+                    'Future Continuous',
+                    'Future Perfect'
+                  ]
+                "
+              >
+                <label>
+                  <input
+                    type="checkbox"
+                    [value]="grammar"
+                    (change)="onCheckboxChange($event, 'grammar')"
+                  />
+                  {{ grammar }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div
+              class="accordion-header"
+              [ngClass]="{ expanded: isAccordionExpanded('level') }"
+              (click)="toggleAccordion('level')"
+            >
+              <label>Level</label>
+              <span>&#9660;</span>
+            </div>
+            <div
+              class="accordion-content"
+              [ngClass]="{ expanded: isAccordionExpanded('level') }"
+            >
+              <div
+                *ngFor="let level of ['Beginner', 'Intermediate', 'Advanced']"
+              >
+                <label>
+                  <input
+                    type="checkbox"
+                    [value]="level"
+                    (change)="onCheckboxChange($event, 'level')"
+                  />
+                  {{ level }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div
+              class="accordion-header"
+              (click)="toggleAccordion('grade')"
+              [ngClass]="{ expanded: isAccordionExpanded('grade') }"
+            >
+              <label>Grade</label>
+              <span>&#9660;</span>
+            </div>
+            <div
+              class="accordion-content grade"
+              [ngClass]="{ expanded: isAccordionExpanded('grade') }"
+            >
+              <div *ngFor="let grade of ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']">
+                <label>
+                  <input
+                    type="checkbox"
+                    [value]="grade"
+                    (change)="onCheckboxChange($event, 'grade')"
+                  />
+                  {{ grade }}
+                </label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="worksheets__content">
+        <div
+          *ngFor="let worksheet of filteredData"
+          class="worksheets__item"
+          (click)="navigateToQuiz(worksheet.id)"
+        >
+          <h2 class="worksheets__title">{{ worksheet.title }}</h2>
+          <p class="worksheets__info">
+            <span> <strong>Level:</strong> {{ worksheet.level }}</span>
+            <span
+              [ngClass]="{ 'worksheets__grade--red': worksheet.grade === 'A1' }"
+            >
+              <strong>Grade:</strong> {{ worksheet.grade }}
+            </span>
+          </p>
+          <p class="worksheets__date">
+            <strong>Date:</strong> {{ worksheet.date }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

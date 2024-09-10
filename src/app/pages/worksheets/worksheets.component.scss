@@ -1,0 +1,176 @@
+.worksheets {
+    font-family: "Figtree", "Figtree-fallback", "Figtree-fallback-android", "Noto Sans", "NotoSans-fallback",
+        "NotoSans-fallback-android", sans-serif;
+    &__wrapper {
+        margin: 2rem;
+        // background-color: #f9f9f9;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+    }
+
+    &__sidebar {
+        width: 100%;
+        max-width: 200px;
+        height: max-content;
+        padding: 20px;
+        background-color: rgb(223, 223, 223);
+    }
+
+    .filter-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            .accordion-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+                padding: 0.5rem;
+                background-color: #f1f1f1;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+
+                label {
+                    margin: 0;
+                    transition: all 0.3s;
+                }
+
+                span {
+                    transition: transform 0.3s;
+                }
+
+                &.expanded > label {
+                    color: red;
+                    font-weight: bold;
+                }
+
+                &.expanded > span {
+                    transform: rotateX(180deg);
+                    color: red;
+                }
+            }
+
+            .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                transition:
+                    max-height 0.3s ease-out,
+                    padding 0.3s ease-out;
+                padding: 0 0.5rem;
+
+                &.expanded {
+                    max-height: 500px;
+                    padding: 0.5rem;
+                }
+
+                &.grade.expanded {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-rows: repeat(3, auto);
+                    gap: 0 1rem;
+                }
+
+                label {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+
+                    input[type="checkbox"] {
+                        margin: 6px 0;
+                        appearance: none;
+                        width: 16px;
+                        height: 16px;
+                        border: 2px solid #ccc;
+                        background-color: white;
+                        border-radius: none;
+                        position: relative;
+                        cursor: pointer;
+                        outline: none;
+                        transition:
+                            background-color 0.3s,
+                            border-color 0.3s;
+
+                        &:checked {
+                            background-color: #007bff;
+                            border-color: #007bff;
+                        }
+
+                        &:checked::after {
+                            content: "";
+                            position: absolute;
+                            top: 1px;
+                            left: 5px;
+                            width: 2px;
+                            height: 8px;
+                            border: solid white;
+                            border-width: 0 2px 2px 0;
+                            transform: rotate(45deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    &__item {
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+
+        width: 100%;
+        max-width: 200px; // Adjust if necessary to fit your design
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__title {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+        margin-bottom: 10px;
+        height: fit-content;
+        min-height: 60px;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        font-size: 0.9em;
+        color: #666;
+
+        strong {
+            color: #333;
+            margin: 5px 0;
+        }
+    }
+
+    &__date {
+        font-size: 0.9em;
+        color: #666;
+
+        strong {
+            color: #333;
+        }
+    }
+}

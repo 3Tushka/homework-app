@@ -1,0 +1,13 @@
+<div class="quiz" *ngIf="quiz">
+  <div class="quiz__title">
+    <h1>{{ quiz.title }}</h1>
+    <p>{{ quiz.description }}</p>
+  </div>
+  <div class="quiz__content">
+    <app-form [model]="quiz"></app-form>
+  </div>
+</div>
+
+<div *ngIf="!quiz">
+  <p>Quiz not found.</p>
+</div>

@@ -1,0 +1,169 @@
+<form class="quiz-form" [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+  <div class="quiz-form__completion-bar">
+    <div
+      class="quiz-form__completion-bar-fill"
+      [style.width.%]="completetionPercentage"
+    ></div>
+  </div>
+
+  <div
+    class="quiz-form__questions"
+    formArrayName="questions"
+    *ngIf="!showResults"
+  >
+    <div
+      *ngFor="let question of questionsFormArray.controls; let i = index"
+      [formGroupName]="i"
+      class="quiz-form__question"
+    >
+      <div class="quiz-form__step" *ngIf="i === step">
+        <p class="quiz-form__question-text">
+          {{ model.questions[i].question }}
+        </p>
+        <div class="quiz-form__options">
+          <button
+            type="button"
+            class="quiz-form__option"
+            (click)="selectOption(i, option)"
+            [class.quiz-form__option--selected]="
+              question.get('answer')?.value === option
+            "
+            *ngFor="let option of model.questions[i].options"
+          >
+            {{ option }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="quiz-form__display-answers"
+    formArrayName="questions"
+    *ngIf="showAnswers"
+  >
+    <div
+      *ngFor="let question of questionsFormArray.controls; let i = index"
+      [formGroupName]="i"
+      class="quiz-form__display-answers__question"
+      [class.quiz-form__question--correct]="isAnswerCorrect[i]"
+    >
+      <div class="quiz-form__display-answers__step">
+        <p class="quiz-form__display-answers__question-text">
+          {{ model.questions[i].question }}
+        </p>
+        <div class="quiz-form__display-answers__options">
+          <!-- Render the chosen answer -->
+          <span
+            class="quiz-form__display-answers__option"
+            [class.quiz-form__display-answers__option--selected]="
+              question.get('answer')?.value === userChoosenAnswers[i]
+            "
+            [class.quiz-form__display-answers__option--wrong]="
+              userChoosenAnswers[i] !== model.questions[i].answer
+            "
+          >
+            {{ userChoosenAnswers[i] }}
+          </span>
+          <!-- Render the correct answer if different from the chosen answer -->
+          <span
+            class="quiz-form__display-answers__option"
+            *ngIf="userChoosenAnswers[i] !== model.questions[i].answer"
+          >
+            Correct Answer: {{ model.questions[i].answer }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-form__navigation-buttons" *ngIf="!showResults">
+    <button
+      type="button"
+      class="quiz-form__button"
+      (click)="previousStep()"
+      [disabled]="step === 0"
+    >
+      Previous
+    </button>
+    <button
+      type="button"
+      class="quiz-form__button"
+      (click)="nextStep()"
+      [hidden]="step === questionsFormArray.length - 1"
+    >
+      Next
+    </button>
+    <button
+      type="submit"
+      class="quiz-form__button quiz-form__button--submit"
+      *ngIf="step === questionsFormArray.length - 1"
+    >
+      Submit
+    </button>
+  </div>
+
+  <div class="quiz-form__results" *ngIf="showResults && !showAnswers">
+    <h2 class="quiz-form__results-title">Results</h2>
+    <p class="quiz-form__results-text">
+      You got {{ correctAnswers }} out of
+      {{ questionsFormArray.length }} correct
+    </p>
+
+    <!-- working zone -->
+    <!-- <div class="quiz-form__results-circle">
+      <div
+        class="quiz-form__results-circle-inner"
+        [ngClass]="{
+          'quiz-form__results-circle-inner--full':
+            correctAnswers === questionsFormArray.length
+        }"
+        [style.animationDuration]="
+          (correctAnswers / questionsFormArray.length) * 2 + 's'
+        "
+      >
+        <span
+          >{{
+            (correctAnswers / questionsFormArray.length) * 100
+              | number : "1.0-0"
+          }}%</span
+        >
+      </div>
+    </div> -->
+
+    <div class="circle-wrap">
+      <div class="circle">
+        <div class="mask full">
+          <div
+            class="fill"
+            [style.--score]="(correctAnswers / questionsFormArray.length) * 100"
+          ></div>
+        </div>
+
+        <div class="mask half">
+          <div
+            class="fill"
+            [style.--score]="(correctAnswers / questionsFormArray.length) * 100"
+          ></div>
+        </div>
+
+        <div class="inside-circle">
+          {{
+            (correctAnswers / questionsFormArray.length) * 100
+              | number : "1.0-0"
+          }}%
+        </div>
+      </div>
+    </div>
+
+    <!-- working zone -->
+
+    <button
+      type="button"
+      class="quiz-form__button"
+      (click)="showAnswers = !showAnswers"
+    >
+      {{ showAnswers ? "Hide" : "Show" }} Results
+    </button>
+  </div>
+</form>

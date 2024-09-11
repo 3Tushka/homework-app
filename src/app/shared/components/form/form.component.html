@@ -53,7 +53,6 @@
           {{ model.questions[i].question }}
         </p>
         <div class="quiz-form__display-answers__options">
-          <!-- Render the chosen answer -->
           <span
             class="quiz-form__display-answers__option"
             [class.quiz-form__display-answers__option--selected]="
@@ -65,7 +64,6 @@
           >
             {{ userChoosenAnswers[i] }}
           </span>
-          <!-- Render the correct answer if different from the chosen answer -->
           <span
             class="quiz-form__display-answers__option"
             *ngIf="userChoosenAnswers[i] !== model.questions[i].answer"
@@ -74,6 +72,19 @@
           </span>
         </div>
       </div>
+    </div>
+    <div class="quiz-form__controlls">
+      <button
+        type="button"
+        class="quiz-form__button"
+        (click)="goToWorksheets()"
+      >
+        Return to Worksheets
+      </button>
+
+      <button type="button" class="quiz-form__button" (click)="resetQuiz()">
+        Reset Quiz
+      </button>
     </div>
   </div>
 
@@ -158,12 +169,18 @@
 
     <!-- working zone -->
 
-    <button
-      type="button"
-      class="quiz-form__button"
-      (click)="showAnswers = !showAnswers"
-    >
-      {{ showAnswers ? "Hide" : "Show" }} Results
-    </button>
+    <div class="quiz-form__controlls">
+      <button
+        type="button"
+        class="quiz-form__button"
+        (click)="showAnswers = !showAnswers"
+      >
+        {{ showAnswers ? "Hide" : "Show" }} Results
+      </button>
+
+      <button type="button" class="quiz-form__button" (click)="resetQuiz()">
+        Reset Quiz
+      </button>
+    </div>
   </div>
 </form>

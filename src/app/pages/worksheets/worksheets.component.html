@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <section class="worksheets">
   <div class="worksheets__wrapper">
     <div class="worksheets__container">
@@ -102,6 +103,19 @@
           class="worksheets__item"
           (click)="navigateToQuiz(worksheet.id)"
         >
+          <div
+            class="worksheets__level"
+            [ngClass]="{
+              'worksheets__level--a1': worksheet.grade === 'A1',
+              'worksheets__level--a2': worksheet.grade === 'A2',
+              'worksheets__level--b1': worksheet.grade === 'B1',
+              'worksheets__level--b2': worksheet.grade === 'B2',
+              'worksheets__level--c1': worksheet.grade === 'C1',
+              'worksheets__level--c2': worksheet.grade === 'C2'
+            }"
+          >
+            {{ worksheet.grade }}
+          </div>
           <h2 class="worksheets__title">{{ worksheet.title }}</h2>
           <p class="worksheets__info">
             <span> <strong>Level:</strong> {{ worksheet.level }}</span>

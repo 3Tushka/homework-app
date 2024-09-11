@@ -9,11 +9,18 @@ import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { NavbarComponent } from '../../shared/components/navbar/navbar.component';
 
 @Component({
   selector: 'app-worksheets',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormComponent, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormComponent,
+    ReactiveFormsModule,
+    NavbarComponent,
+  ],
   templateUrl: './worksheets.component.html',
   styleUrl: './worksheets.component.scss',
 })

@@ -6,11 +6,11 @@
 
     &__completion-bar {
         width: 100%;
-        height: 20px;
+        height: 1.25rem;
         background-color: #e0e0e0;
-        border-radius: 10px;
+        border-radius: 0.625rem;
         overflow: hidden;
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
 
         &-fill {
             height: 100%;
@@ -21,13 +21,13 @@
     }
 
     &__questions {
-        margin-bottom: 20px;
-        height: 300px;
-        width: 800px;
+        margin-bottom: 1.25rem;
+        height: 18.75rem;
+        width: 50rem;
     }
 
     &__question {
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
 
         &--correct {
             background-color: #d4edda;
@@ -35,16 +35,16 @@
     }
 
     &__step {
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
     }
 
     &__question-text {
         font-size: 1.2em;
-        margin-bottom: 30px;
-        padding-bottom: 8px;
-        font-size: 1.5rem;
+        margin-bottom: 1.875rem;
+        padding-bottom: 0.5rem;
+        font-size: 24px;
         font-weight: 600;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 0.0625rem solid #ccc;
         max-width: fit-content;
     }
 
@@ -53,16 +53,16 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        gap: 20px;
+        gap: 1.25rem;
     }
 
     &__option {
         background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        padding: 10px 20px;
+        border: 0.0625rem solid #ccc;
+        padding: 0.625rem 1.25rem;
         cursor: pointer;
 
-        font-size: 1.3rem;
+        font-size: 20.8px;
         opacity: 0;
         animation: fadeIn 0.3s forwards;
         transition:
@@ -88,14 +88,17 @@
     &__navigation-buttons {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
     }
 
     &__button {
+        width: 100%;
+        max-width: 150px;
         background-color: #007bff;
         border: none;
         color: white;
-        padding: 10px 20px;
+        font-size: 1rem;
+        padding: 0.625rem 1.25rem;
         cursor: pointer;
         transition: background-color 0.3s;
 
@@ -114,29 +117,29 @@
     }
 
     &__results {
-        margin-top: 20px;
+        margin-top: 1.25rem;
         text-align: center;
 
         &-title {
             font-size: 1.5em;
-            margin-bottom: 10px;
+            margin-bottom: 0.625rem;
         }
 
         &-text {
             font-size: 1.2em;
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
         }
 
         &-circle {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
 
             &-inner {
-                width: 100px;
-                height: 100px;
-                border: 10px solid #ccc;
+                width: 6.25rem;
+                height: 6.25rem;
+                border: 0.625rem solid #ccc;
                 border-radius: 50%;
                 display: flex;
                 justify-content: center;
@@ -154,27 +157,27 @@
     }
 
     .circle-wrap {
-        margin: 50px auto;
-        width: 150px;
-        height: 150px;
+        margin: 3.125rem auto;
+        width: 9.375rem;
+        height: 9.375rem;
         background: #e6e2e7;
         border-radius: 50%;
     }
 
     .circle-wrap .circle .mask,
     .circle-wrap .circle .fill {
-        width: 150px;
-        height: 150px;
+        width: 9.375rem;
+        height: 9.375rem;
         position: absolute;
         border-radius: 50%;
     }
 
     .circle-wrap .circle .mask {
-        clip: rect(0px, 150px, 150px, 75px);
+        clip: rect(0rem, 9.375rem, 9.375rem, 4.6875rem);
     }
 
     .circle-wrap .circle .mask .fill {
-        clip: rect(0px, 75px, 150px, 0px);
+        clip: rect(0rem, 4.6875rem, 9.375rem, 0rem);
         background-color: #9e00b1;
     }
     .circle-wrap .circle .mask.full,
@@ -193,14 +196,14 @@
     }
 
     .circle-wrap .inside-circle {
-        width: 130px;
-        height: 130px;
+        width: 8.125rem;
+        height: 8.125rem;
         border-radius: 50%;
         background: #fff;
-        line-height: 130px;
+        line-height: 8.125rem;
         text-align: center;
-        margin-top: 10px;
-        margin-left: 10px;
+        margin-top: 0.625rem;
+        margin-left: 0.625rem;
         position: absolute;
         z-index: 100;
         font-weight: 700;
@@ -208,37 +211,37 @@
     }
 
     &__display-answers {
-        margin-top: 20px;
+        margin-top: 1.25rem;
 
         &__question {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            margin-bottom: 1.25rem;
+            padding: 0.625rem;
+            border: 0.0625rem solid #ccc;
+            border-radius: 0.3125rem;
         }
 
         &__step {
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
         }
 
         &__question-text {
             font-size: 1.2em;
-            margin-bottom: 10px;
+            margin-bottom: 0.625rem;
             font-weight: 600;
         }
 
         &__options {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 0.625rem;
         }
 
         &__option {
             background-color: rgba(54, 252, 100, 0.5);
-            border: 1px solid #ccc;
-            padding: 10px;
-            font-size: 1.1rem;
-            border-radius: 5px;
+            border: 0.0625rem solid #ccc;
+            padding: 0.625rem;
+            font-size: 17.6px;
+            border-radius: 0.3125rem;
 
             &--selected {
                 background-color: rgba(54, 252, 100, 0.5);
@@ -250,12 +253,20 @@
             }
         }
     }
+
+    &__controlls {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        gap: 1.25rem;
+    }
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(1.25rem);
     }
     to {
         opacity: 1;

@@ -1,0 +1,42 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 8.25rem;
+    padding: 1rem 1.5rem;
+    background-color: #fff;
+    color: #333;
+
+    font-family: "Figtree", "Figtree-fallback", "Figtree-fallback-android", "Noto Sans", "NotoSans-fallback",
+        "NotoSans-fallback-android", sans-serif;
+
+    &__brand {
+        font-size: 3rem;
+        font-weight: 400;
+        font-style: italic;
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+    }
+
+    &__links {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+
+        &__item {
+            font-size: 1.3rem;
+            a {
+                color: #333;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

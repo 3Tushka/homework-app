@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { QuizDTO } from '../../dto/quiz.dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -30,7 +31,7 @@ export class FormComponent implements OnChanges {
   userChoosenAnswers: string[] = [];
   isAnswerCorrect: boolean[] = [];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.quizForm = this.fb.group({
       questions: this.fb.array([]),
     });
@@ -119,5 +120,20 @@ export class FormComponent implements OnChanges {
       ).length;
       this.completetionPercentage = (answeredQuestions / totalQuestions) * 100;
     }
+  }
+
+  resetQuiz() {
+    this.showResults = false;
+    this.showAnswers = false;
+    this.step = 0;
+    this.correctAnswers = 0;
+    this.userChoosenAnswers = [];
+    this.isAnswerCorrect = [];
+    this.quizForm.reset();
+    this.calculateCompletionPercentage();
+  }
+
+  goToWorksheets() {
+    this.router.navigate(['/worksheets']);
   }
 }

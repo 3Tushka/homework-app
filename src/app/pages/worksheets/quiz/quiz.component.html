@@ -4,6 +4,7 @@
     <p>{{ quiz.description }}</p>
   </div>
   <div class="quiz__content">
+    <app-reading *ngIf="quiz.passage"></app-reading>
     <app-form [model]="quiz"></app-form>
   </div>
 </div>

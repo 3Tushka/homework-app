@@ -1,38 +1,64 @@
 .home {
     font-family: "Figtree", "Figtree-fallback", "Figtree-fallback-android", "Noto Sans", "NotoSans-fallback",
         "NotoSans-fallback-android", sans-serif;
+
     &__wrapper {
         margin: 2rem 10rem;
         display: flex;
         flex-direction: column;
         gap: 5rem;
+
+        @media (max-width: 1024px) {
+            margin: 2rem 5rem; // Adjust margin for tablets
+        }
+
+        @media (max-width: 767px) {
+            margin: 1rem; // Adjust margin for mobile devices
+        }
     }
 
     &__container {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+
+        @media (max-width: 767px) {
+            flex-direction: column; // Stack items vertically on mobile devices
+        }
     }
 
     &__description {
         font-size: 1.2rem;
         line-height: 2rem;
         color: rgb(90, 90, 90);
+
+        @media (max-width: 767px) {
+            font-size: 1rem; // Adjust font size for mobile devices
+            line-height: 1.5rem;
+        }
     }
 
     &__gallery {
         position: relative;
         width: 100%;
         max-width: 600px;
-        height: 320px; // Height of the images
-        margin: 20px; // Margin for display
+        height: 320px;
+        margin: 20px;
+
+        @media (max-width: 1024px) {
+            max-width: 100%; // Adjust width for tablets
+            height: auto; // Adjust height for tablets
+        }
+
+        @media (max-width: 767px) {
+            margin: 10px; // Adjust margin for mobile devices
+        }
 
         .image {
             position: absolute;
             background-size: cover;
             background-position: center;
-            border-radius: 10px; // Adjust border radius as needed
-
+            border-radius: 10px;
             animation: pump 5s infinite;
 
             &:nth-child(1) {
@@ -40,22 +66,22 @@
                 height: 50%;
                 top: 20%;
                 right: 20%;
-                z-index: 1; // Stack first image on top
+                z-index: 1;
                 animation-delay: 0.5s;
             }
             &:nth-child(2) {
                 width: 90%;
                 height: 75%;
                 top: 10%;
-                right: 10%; // Adjust as needed to create overflow effect
-                z-index: 2; // Stack second image on top of the first
+                right: 10%;
+                z-index: 2;
                 animation-delay: 1s;
             }
             &:nth-child(3) {
                 width: 90%;
                 height: 100%;
-                right: 0; // Adjust as needed to create overflow effect
-                z-index: 3; // Stack third image on top of the second
+                right: 0;
+                z-index: 3;
                 animation-delay: 1.5s;
             }
         }
@@ -65,18 +91,29 @@
         width: 100%;
         max-width: 50%;
 
-        &-title {
-            // Styles for faq title
+        @media (max-width: 1024px) {
+            max-width: 100%; // Adjust width for tablets
+        }
 
+        &-title {
             &--heading {
                 font-size: 2rem;
                 margin: 0;
+
+                @media (max-width: 767px) {
+                    font-size: 1.5rem; // Adjust font size for mobile devices
+                }
             }
 
             &--description {
                 font-size: 1rem;
                 line-height: 2rem;
                 color: rgb(90, 90, 90);
+
+                @media (max-width: 767px) {
+                    font-size: 0.9rem; // Adjust font size for mobile devices
+                    line-height: 1.5rem;
+                }
             }
         }
 
@@ -86,20 +123,30 @@
             grid-template-columns: repeat(2, 150px);
             gap: 1rem 2.5rem;
 
+            @media (max-width: 767px) {
+                grid-template-columns: 1fr; // Stack items vertically on mobile devices
+            }
+
             &-item {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 gap: 1rem;
+
                 img {
                     width: 48px;
                     height: auto;
                     object-fit: cover;
                 }
+
                 p {
                     font-weight: 600;
                     font-size: 20px;
                     line-height: 1.75rem;
+
+                    @media (max-width: 767px) {
+                        font-size: 1rem; // Adjust font size for mobile devices
+                    }
                 }
             }
         }
@@ -111,8 +158,8 @@
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         padding: 1rem;
 
-        &-title {
-            // Styles for instructions title
+        @media (max-width: 1024px) {
+            max-width: 90%; // Adjust width for tablets
         }
     }
 
@@ -120,12 +167,20 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        list-style-type: decimal; // Use decimal to show numbers
-        padding-left: 20px; // Adjust padding as needed
+        list-style-type: decimal;
+        padding-left: 20px;
+
+        @media (max-width: 767px) {
+            padding-left: 10px; // Adjust padding for mobile devices
+        }
 
         &--item {
             line-height: 24px;
-            font-size: 16px; // Adjust font size as needed
+            font-size: 16px;
+
+            @media (max-width: 767px) {
+                font-size: 14px; // Adjust font size for mobile devices
+            }
         }
     }
 
@@ -134,15 +189,22 @@
         flex-direction: column;
         gap: 1rem;
         max-width: 400px;
+
+        @media (max-width: 1024px) {
+            max-width: 100%; // Adjust width for tablets
+        }
     }
 
     &__title {
         margin: 0;
         font-size: 3rem;
         line-height: 3.25rem;
-    }
 
-    //last container
+        @media (max-width: 767px) {
+            font-size: 2rem; // Adjust font size for mobile devices
+            line-height: 2.25rem;
+        }
+    }
 
     .container-links {
         display: flex;
@@ -155,12 +217,20 @@
                 font-size: 1.8rem;
                 line-height: 2rem;
                 font-weight: bold;
+
+                @media (max-width: 767px) {
+                    font-size: 1.5rem; // Adjust font size for mobile devices
+                }
             }
 
             span {
                 font-size: 1.2rem;
                 line-height: 1.5rem;
                 color: rgb(90, 90, 90);
+
+                @media (max-width: 767px) {
+                    font-size: 1rem; // Adjust font size for mobile devices
+                }
 
                 a {
                     color: black;
@@ -178,18 +248,25 @@
         grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
         gap: 1rem;
 
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr; // Stack items vertically on tablets
+        }
+
         &-item {
             height: auto;
             padding: 1rem;
             border: 1px solid rgba(90, 90, 90, 0.5);
             border-radius: 10px;
-
             transition: all 0.2s ease-in;
 
             &-title {
                 margin: 0;
                 font-size: 3rem;
                 font-weight: 800;
+
+                @media (max-width: 767px) {
+                    font-size: 2rem; // Adjust font size for mobile devices
+                }
             }
 
             &[id="a0"] &-title {
@@ -223,10 +300,18 @@
             &-description {
                 font-weight: 500;
                 font-size: 1.5rem;
+
+                @media (max-width: 767px) {
+                    font-size: 1.2rem; // Adjust font size for mobile devices
+                }
             }
 
             &-text {
                 line-height: 1.5rem;
+
+                @media (max-width: 767px) {
+                    line-height: 1.25rem; // Adjust line height for mobile devices
+                }
             }
 
             &.scale-up {

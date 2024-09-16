@@ -5,12 +5,17 @@ export interface QuestionDTO {
 }
 
 export interface QuizDTO {
-  id: number;
+  id: number | string;
   title: string;
-  grammar: string;
+  grammar?: string;
   description: string;
   level: string;
   grade: string;
   date: string;
   questions: QuestionDTO[];
+  passage?: string;
+}
+
+export interface ReadingDTO extends QuizDTO {
+  passage: string;
 }

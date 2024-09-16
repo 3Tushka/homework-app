@@ -1,0 +1,74 @@
+.reading {
+    font-family: "Figtree", "Figtree-fallback", "Figtree-fallback-android", "Noto Sans", "NotoSans-fallback",
+        "NotoSans-fallback-android", sans-serif;
+
+    &__content {
+        padding: 2rem;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        background-color: rgb(252, 252, 252);
+
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    &__header {
+        border: 2px solid #ddd;
+        padding: 1rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+
+        max-width: 20%;
+        height: fit-content;
+    }
+
+    &__level {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    &__grade {
+        font-size: 1.2rem;
+        font-weight: bold;
+
+        color: #fff;
+        &--a1 {
+            color: rgb(144, 238, 144);
+        }
+
+        &--a2 {
+            color: rgb(212, 212, 85);
+        }
+
+        &--b1 {
+            color: rgb(255, 165, 0);
+        }
+
+        &--b2 {
+            color: rgb(255, 0, 0);
+        }
+
+        &--c1 {
+            color: rgb(128, 0, 128);
+        }
+
+        &--c2 {
+            color: rgb(0, 0, 139);
+        }
+    }
+
+    &__passage {
+        width: 80%;
+        min-height: 200px;
+
+        &--text {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            text-align: justify;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+<section class="reading" *ngIf="reading">
+  <div class="reading__content">
+    <div class="reading__header">
+      <div class="reading__level">
+        <span> {{ reading.level }}</span>
+      </div>
+
+      <div
+        class="reading__grade"
+        [ngClass]="'reading__grade--' + reading.grade.toLowerCase()"
+      >
+        <span>{{ reading.grade }}</span>
+      </div>
+
+      <button class="reading__toggle-text" (click)="toggleModuleText()">
+        <span>{{ toggleText ? "Hide Text" : "Show Text" }}</span>
+      </button>
+    </div>
+
+    <article class="reading__passage">
+      <p *ngIf="toggleText" class="reading__passage--text">
+        {{ reading.passage }}
+      </p>
+    </article>
+  </div>
+</section>

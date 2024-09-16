@@ -2,7 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { FormComponent } from '../../shared/components/form/form.component';
-import { quizData } from '../../shared/data';
+import { quizData, readingData } from '../../shared/data';
+
+import { hasProperties } from '../../shared/utils/functions';
+
 import {
   FormArray,
   FormBuilder,
@@ -25,7 +28,7 @@ import { NavbarComponent } from '../../shared/components/navbar/navbar.component
   styleUrl: './worksheets.component.scss',
 })
 export class WorksheetsComponent {
-  data = quizData;
+  data = [...quizData, ...readingData];
   filteredData = this.data;
   filterForm: FormGroup;
 
@@ -55,7 +58,7 @@ export class WorksheetsComponent {
     this.loadAccordionState();
   }
 
-  navigateToQuiz(id: number) {
+  navigateToQuiz(id: string | number) {
     this.router.navigate([id], { relativeTo: this.route });
   }
 
@@ -74,12 +77,17 @@ export class WorksheetsComponent {
   applyFilter() {
     this.filteredData = this.data.filter((item) => {
       return (
-        (this.filterForm.value.level.length === 0 ||
-          this.filterForm.value.level.includes(item.level)) &&
-        (this.filterForm.value.grade.length === 0 ||
-          this.filterForm.value.grade.includes(item.grade)) &&
-        (this.filterForm.value.grammar.length === 0 ||
-          this.filterForm.value.grammar.includes(item.grammar))
+        this.filterForm.value.level.length === 0 ||
+        (hasProperties<{ level: string }>(item, ['level']) &&
+          this.filterForm.value.level.includes(item.level))
+      )(
+        this.filterForm.value.grade.length === 0 ||
+          (hasProperties<{ grade: string }>(item, ['grade']) &&
+            this.filterForm.value.grade.includes(item.grade))
+      )(
+        this.filterForm.value.grammar.length === 0 ||
+          (hasProperties<{ grammar: string }>(item, ['grammar']) &&
+            this.filterForm.value.grammar.includes(item.grammar))
       );
     });
   }

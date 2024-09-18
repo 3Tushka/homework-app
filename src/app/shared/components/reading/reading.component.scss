@@ -1,39 +1,44 @@
+// reading.component.scss
+
 .reading {
     font-family: "Figtree", "Figtree-fallback", "Figtree-fallback-android", "Noto Sans", "NotoSans-fallback",
         "NotoSans-fallback-android", sans-serif;
 
+    &__header {
+        border: 1px solid #ddd;
+        background-color: #fff;
+        padding: 1rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 0.5rem;
+        height: fit-content;
+    }
+
     &__content {
+        margin-top: 2rem;
         padding: 2rem;
         border-radius: 5px;
         border: 1px solid #ddd;
         background-color: rgb(252, 252, 252);
-
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-    }
-
-    &__header {
-        border: 2px solid #ddd;
-        padding: 1rem;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 0.5rem;
-
-        max-width: 20%;
-        height: fit-content;
     }
 
     &__level {
         font-size: 1.2rem;
-        font-weight: bold;
+        span {
+            font-weight: bold;
+        }
     }
 
     &__grade {
         font-size: 1.2rem;
-        font-weight: bold;
+
+        span {
+            font-weight: bold;
+        }
 
         color: #fff;
         &--a1 {
@@ -61,10 +66,26 @@
         }
     }
 
-    &__passage {
-        width: 80%;
-        min-height: 200px;
+    &__toggle-text {
+        font-size: 1.2rem;
+        cursor: pointer;
+        border: none;
+        background-color: #007bff;
+        width: 100%;
+        max-width: 120px;
+        padding: 0.5rem;
+        color: #fff;
 
+        &:hover {
+            background-color: #0056b3;
+        }
+
+        &--toggled {
+            background-color: #ed3a3a; // Change to desired color when toggled
+        }
+    }
+
+    &__passage {
         &--text {
             font-size: 1.2rem;
             line-height: 1.5;

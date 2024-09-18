@@ -1,12 +1,29 @@
-<div class="quiz" *ngIf="quiz">
-  <div class="quiz__title">
-    <h1>{{ quiz.title }}</h1>
-    <p>{{ quiz.description }}</p>
+<app-navbar></app-navbar>
+
+<div
+  class="quiz"
+  *ngIf="quiz"
+  [ngClass]="{
+    'grade-a1': quiz.grade === 'A1',
+    'grade-a2': quiz.grade === 'A2',
+    'grade-b1': quiz.grade === 'B1',
+    'grade-b2': quiz.grade === 'B2',
+    'grade-c1': quiz.grade === 'C1',
+    'grade-c2': quiz.grade === 'C2'
+  }"
+>
+  <div class="quiz__wrapper">
+    <div class="quiz__title">
+      <h1>{{ quiz.title }}</h1>
+      <p>{{ quiz.description }}</p>
+    </div>
+    <div class="quiz__content">
+      <app-reading *ngIf="quiz.passage"></app-reading>
+      <app-form [model]="quiz"></app-form>
+    </div>
   </div>
-  <div class="quiz__content">
-    <app-reading *ngIf="quiz.passage"></app-reading>
-    <app-form [model]="quiz"></app-form>
-  </div>
+  <app-feedback></app-feedback>
+  <button (click)="sendFeedback()">Send Feedback</button>
 </div>
 
 <div *ngIf="!quiz">

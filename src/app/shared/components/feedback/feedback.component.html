@@ -1,0 +1,12 @@
+<form [formGroup]="feedbackForm" (ngSubmit)="sendEmailToServer()">
+  <label for="from_name">Your Name:</label>
+  <input id="from_name" formControlName="from_name" type="text" required />
+
+  <label for="message">Message:</label>
+  <textarea id="message" formControlName="message" required></textarea>
+
+  <label for="reply_to">Your Email:</label>
+  <input id="reply_to" formControlName="reply_to" type="email" required />
+
+  <button type="submit">Send Feedback</button>
+</form>

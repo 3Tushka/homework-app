@@ -5,13 +5,13 @@ export interface QuestionDTO {
 }
 
 export interface QuizDTO {
-  id: number | string;
+  id?: number | string;
   title: string;
   grammar?: string;
-  description: string;
-  level: string;
-  grade: string;
-  date: string;
+  description?: string;
+  level?: string;
+  grade?: string;
+  date?: string;
   questions: QuestionDTO[];
   passage?: string;
 }

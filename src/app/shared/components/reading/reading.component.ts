@@ -13,8 +13,8 @@ import { ReadingDTO } from '../../dto/quiz.dto';
 })
 export class ReadingComponent {
   readingDataConst = readingData;
-  reading?: ReadingDTO;
-  toggleText: boolean = true;
+  reading?: ReadingDTO | undefined;
+  toggleText: boolean = false;
 
   constructor(private route: ActivatedRoute) {
     document.onmouseup = () => {

@@ -77,17 +77,15 @@ export class WorksheetsComponent {
   applyFilter() {
     this.filteredData = this.data.filter((item) => {
       return (
-        this.filterForm.value.level.length === 0 ||
-        (hasProperties<{ level: string }>(item, ['level']) &&
-          this.filterForm.value.level.includes(item.level))
-      )(
-        this.filterForm.value.grade.length === 0 ||
+        (this.filterForm.value.level.length === 0 ||
+          (hasProperties<{ level: string }>(item, ['level']) &&
+            this.filterForm.value.level.includes(item.level))) &&
+        (this.filterForm.value.grade.length === 0 ||
           (hasProperties<{ grade: string }>(item, ['grade']) &&
-            this.filterForm.value.grade.includes(item.grade))
-      )(
-        this.filterForm.value.grammar.length === 0 ||
+            this.filterForm.value.grade.includes(item.grade))) &&
+        (this.filterForm.value.grammar.length === 0 ||
           (hasProperties<{ grammar: string }>(item, ['grammar']) &&
-            this.filterForm.value.grammar.includes(item.grammar))
+            this.filterForm.value.grammar.includes(item.grammar)))
       );
     });
   }

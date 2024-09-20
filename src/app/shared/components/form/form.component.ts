@@ -9,11 +9,12 @@ import {
 } from '@angular/forms';
 import { QuizDTO } from '../../dto/quiz.dto';
 import { Router } from '@angular/router';
+import { FeedbackComponent } from '../feedback/feedback.component';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, FeedbackComponent],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
 })

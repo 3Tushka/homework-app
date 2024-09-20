@@ -7,6 +7,7 @@ export function hasProperties<T>(
   return properties.every((property) => property in item);
 }
 
+// KILL ME! Later... YAGNI
 export function getOrGenerateUUID(key: string): string {
   let uuid = sessionStorage.getItem(key);
   if (!uuid) {

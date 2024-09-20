@@ -6,9 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 import { QuizDTO, ReadingDTO } from '../../../shared/dto/quiz.dto';
 import { ReadingComponent } from '../../../shared/components/reading/reading.component';
 import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
-import { FormBuilder } from '@angular/forms';
-import { FeedbackComponent } from '../../../shared/components/feedback/feedback.component';
-import { FeedbackService } from '../../../shared/components/feedback/feedback.service';
 
 @Component({
   selector: 'app-quiz',
@@ -19,14 +16,11 @@ import { FeedbackService } from '../../../shared/components/feedback/feedback.se
     ReadingComponent,
     NavbarComponent,
     NavbarComponent,
-    FeedbackComponent,
   ],
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.scss'],
 })
 export class QuizComponent implements OnInit {
-  @ViewChild(FeedbackComponent) feedbackComponent!: FeedbackComponent;
-
   data = [...quizData, ...readingData];
   quiz?: QuizDTO | undefined;
 
@@ -39,16 +33,5 @@ export class QuizComponent implements OnInit {
         (quiz) => quiz.id.toString() === id
       ) as ReadingDTO; // This should be QuizDTO but idgf for now, ReadingDTO is exteded from QuizDTO
     });
-  }
-
-  sendFeedback() {
-    if (this.feedbackComponent) {
-      this.feedbackComponent.quizData = this.quiz;
-      this.feedbackComponent.sendEmailToServer();
-
-      console.log('Feedback sent with component!', this.quiz);
-    }
-
-    console.log('Feedback sent without component!');
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -6,8 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 
-import emailjs from 'emailjs-com';
 import { FeedbackService } from './feedback.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-feedback',
@@ -17,31 +17,61 @@ import { FeedbackService } from './feedback.service';
   styleUrl: './feedback.component.scss',
 })
 export class FeedbackComponent {
-  @Input() quizData?: any;
   feedbackForm: FormGroup;
+  quizId?: string | null;
 
-  constructor(private fb: FormBuilder, private emailService: FeedbackService) {
+  isModalOpen = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private emailService: FeedbackService,
+    private route: ActivatedRoute
+  ) {
     this.feedbackForm = this.fb.group({
       from_name: ['', Validators.required],
       message: ['', Validators.required],
-      reply_to: ['', [Validators.required, Validators.email]],
     });
   }
 
-  sendEmailToServer(quizData?: any) {
-    if (this.feedbackForm.valid) {
-      const templateParams = {
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.quizId = params.get('id');
+      console.log('DATA: ', this.quizId);
+    });
+  }
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  sendFeedback() {
+    if (this.feedbackForm.valid && this.quizId) {
+      const formData = {
         ...this.feedbackForm.value,
-        quizData: JSON.stringify(quizData),
+        quiz_id: this.quizId,
       };
 
-      this.emailService.sendEmail(templateParams).then(
+      this.emailService.sendEmail(formData).then(
         (response) => {
           console.log('SUCCESS!', response.status, response.text);
+          this.closeModal();
+          this.feedbackForm.reset();
         },
         (error) => {
-          console.log('FAILED...', error);
+          console.error('FAILED...', error);
         }
+      );
+    } else {
+      console.error(
+        'Form is invalid or quiz ID is missing',
+        'ID: ',
+        this.quizId,
+        'Form: ',
+        this.feedbackForm
       );
     }
   }

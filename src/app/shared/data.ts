@@ -1,8 +1,6 @@
-import { getOrGenerateUUID } from './utils/functions';
-
 export const quizData = [
   {
-    id: getOrGenerateUUID('quiz-1'),
+    id: 'bf964db6-d743-41ba-a130-5a4db09ce26a',
     title: 'Past simple - Regular and Irregular verbs',
     grammar: 'Past Simple',
     description:
@@ -61,7 +59,7 @@ export const quizData = [
     ],
   },
   {
-    id: getOrGenerateUUID('quiz-2'),
+    id: '60f17666-4554-4c3b-b0c6-5df9d275a420',
     title: 'Past Perfect - Form and Use',
     grammar: 'Past Perfect',
     description:
@@ -341,7 +339,7 @@ export const placementTest = [
 
 export const readingData = [
   {
-    id: getOrGenerateUUID('read-1'),
+    id: '0c7bc745-1724-4776-8f37-40b145879fd1',
     title: 'Reading Comprehension - The Enigma of Eldoria',
     level: 'Advanced',
     grade: 'B2',
@@ -461,7 +459,7 @@ export const readingData = [
   },
 
   {
-    id: getOrGenerateUUID('read-2'),
+    id: 'ce7ab4ef-5fd1-44e0-b576-a5da08a67480',
     title: 'Reading Comprehension - The Adventure of the Lost Key',
     level: 'Intermediate',
     grade: 'B1',

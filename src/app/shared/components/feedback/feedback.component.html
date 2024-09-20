@@ -1,12 +1,29 @@
-<form [formGroup]="feedbackForm" (ngSubmit)="sendEmailToServer()">
-  <label for="from_name">Your Name:</label>
-  <input id="from_name" formControlName="from_name" type="text" required />
+<div class="modal" [class.modal--show]="isModalOpen">
+  <div class="modal__content">
+    <span class="modal__close" (click)="closeModal()">&times;</span>
+    <form
+      class="modal__form"
+      [formGroup]="feedbackForm"
+      (ngSubmit)="sendFeedback()"
+    >
+      <label class="modal__label" for="from_name">Your Name:</label>
+      <input
+        class="modal__input"
+        id="from_name"
+        formControlName="from_name"
+        type="text"
+      />
 
-  <label for="message">Message:</label>
-  <textarea id="message" formControlName="message" required></textarea>
+      <label class="modal__label" for="message">Message:</label>
+      <textarea
+        class="modal__textarea"
+        id="message"
+        formControlName="message"
+      ></textarea>
 
-  <label for="reply_to">Your Email:</label>
-  <input id="reply_to" formControlName="reply_to" type="email" required />
+      <button class="modal__button" type="submit">Send Feedback</button>
+    </form>
+  </div>
+</div>
 
-  <button type="submit">Send Feedback</button>
-</form>
+<button class="open-modal-button" (click)="openModal()">Feedback</button>

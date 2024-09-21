@@ -82,3 +82,18 @@
         gap: 1rem;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .quiz {
+        padding: 1rem 0;
+
+        &__wrapper {
+            padding: 0;
+            max-width: 90vw;
+        }
+
+        &__title {
+            margin: 2rem 1rem;
+        }
+    }
+}

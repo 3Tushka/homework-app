@@ -16,7 +16,12 @@
       [ngClass]="{ 'reading__toggle-text--toggled': toggleText }"
       (click)="toggleModuleText()"
     >
-      <span>{{ toggleText ? "Hide Text" : "Show Text" }}</span>
+      <ng-container *ngIf="toggleText; else showText">
+        <img src="icons/eye-off.svg" alt="toggle-on" />
+      </ng-container>
+      <ng-template #showText>
+        <img src="icons/eye-open.svg" alt="toggle-off" />
+      </ng-template>
     </button>
   </div>
   <div class="reading__content" *ngIf="toggleText">

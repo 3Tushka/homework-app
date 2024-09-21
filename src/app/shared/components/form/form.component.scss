@@ -306,3 +306,84 @@
         animation-delay: 0.2s * $i;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .quiz-form {
+        &__wrapper {
+            padding: 0 1rem;
+        }
+
+        &__option {
+            font-size: 1rem;
+            padding: 0.5rem;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .quiz-form {
+        &__wrapper {
+            padding: 0 1rem;
+        }
+
+        &__completion-bar {
+            margin: 1rem 0 2rem;
+        }
+
+        &__questions {
+            height: auto;
+        }
+
+        &__question-text {
+            font-size: 1.1rem;
+            line-height: 1.5rem;
+        }
+
+        &__options {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        &__option {
+            width: 100%;
+            font-size: 1rem;
+            padding: 0.5rem;
+        }
+
+        &__button {
+            font-size: 0.9rem;
+            padding: 0.5rem;
+        }
+
+        &__results {
+            &-title {
+                font-size: 1.3rem;
+            }
+
+            &-text {
+                font-size: 1.1rem;
+            }
+
+            &-circle {
+                &-inner {
+                    font-size: 1.1rem;
+                }
+            }
+        }
+
+        &__display-answers {
+            &__question-text {
+                font-size: 1rem;
+            }
+
+            &__option {
+                font-size: 0.8rem;
+                padding: 0.5rem;
+            }
+        }
+
+        &__controlls {
+            margin: 1rem 0;
+        }
+    }
+}

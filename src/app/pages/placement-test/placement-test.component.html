@@ -1,3 +1,8 @@
+<app-navbar></app-navbar>
 <div class="place-test" *ngIf="placementTestData">
-  <app-form [model]="placementTestData"></app-form>
+  <div class="place-test__wrapper">
+    <div class="place-test__content">
+      <app-form [model]="placementTestData"></app-form>
+    </div>
+  </div>
 </div>

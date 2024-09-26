@@ -1,0 +1,59 @@
+.place-test {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    // overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff;
+        opacity: 0.5;
+        background-image: linear-gradient(
+                30deg,
+                #2d00ff 12%,
+                transparent 12.5%,
+                transparent 87%,
+                #2d00ff 87.5%,
+                #2d00ff
+            ),
+            linear-gradient(150deg, #2d00ff 12%, transparent 12.5%, transparent 87%, #2d00ff 87.5%, #2d00ff),
+            linear-gradient(30deg, #2d00ff 12%, transparent 12.5%, transparent 87%, #2d00ff 87.5%, #2d00ff),
+            linear-gradient(150deg, hsl(251, 100%, 50%) 12%, transparent 12.5%, transparent 87%, #2d00ff 87.5%, #2d00ff),
+            linear-gradient(60deg, #2d00ff77 25%, transparent 25.5%, transparent 75%, #2d00ff77 75%, #2d00ff77),
+            linear-gradient(60deg, #2d00ff77 25%, transparent 25.5%, transparent 75%, #2d00ff77 75%, #2f00ff77);
+        background-size: 80px 140px;
+        background-position:
+            0 0,
+            0 0,
+            40px 70px,
+            40px 70px,
+            0 0,
+            40px 70px;
+        z-index: -1;
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__content {
+        width: 100%;
+        max-width: 50vw;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1;
+    }
+}

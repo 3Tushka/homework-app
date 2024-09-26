@@ -1,10 +1,15 @@
 <form class="quiz-form" [formGroup]="quizForm" (ngSubmit)="onSubmit()">
   <div class="quiz-form__wrapper">
-    <div class="quiz-form__completion-bar">
-      <div
-        class="quiz-form__completion-bar-fill"
-        [style.width.%]="completetionPercentage"
-      ></div>
+    <div class="quiz-form__step-complete">
+      <div class="quiz-form__step-complete--counter">
+        {{ step + 1 }} / {{ questionsFormArray.length }}
+      </div>
+      <div class="quiz-form__completion-bar">
+        <div
+          class="quiz-form__completion-bar-fill"
+          [style.width.%]="completetionPercentage"
+        ></div>
+      </div>
     </div>
     <div
       class="quiz-form__questions"
